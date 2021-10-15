@@ -4,18 +4,28 @@ let buttonArray = [];
 let statusArray = [];
 let myLibrary = [];
 
+if(localStorage.myLibrary.length === 2){
+localStorage.setItem("myLibrary", "[]");
+}
+
 //JSON localStorage *-----
-let getLibrary = localStorage.getItem("myLibrary");
-myLibrary = JSON.parse(getLibrary);
-console.log("retrievedObject: ", JSON.parse(getLibrary));
+function getLibrary(){
+    myLibrary = [];
+    let getLibrary = localStorage.getItem("myLibrary");
+    myLibrary = JSON.parse(getLibrary);
+    console.log("retrievedObject: ", JSON.parse(getLibrary));
+}
+
+
 
 function saveLibrary(){
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
-//-----*
+
 
 add.addEventListener("click", addBook);
-
+//EXECUTE
+getLibrary();
 myLibrary.forEach(function(book){
     displayBook(book);
 })
