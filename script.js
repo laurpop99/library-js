@@ -13,7 +13,7 @@ function getLibrary(){
     myLibrary = [];
     let getLibrary = localStorage.getItem("myLibrary");
     myLibrary = JSON.parse(getLibrary);
-    console.log("retrievedObject: ", JSON.parse(getLibrary));
+    // console.log("retrievedObject: ", JSON.parse(getLibrary));
 }
 
 
@@ -30,16 +30,18 @@ myLibrary.forEach(function(book){
     displayBook(book);
 })
 
-function Book(title, author, pages, didRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.didRead = didRead;
-}
+class Book {
+    constructor(title, author, pages, didRead){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.didRead = didRead;
+    }
 
-Book.prototype.isRead = function(){
-    if(this.isRead) return true;
-    else return false;
+    isRead(){
+        if(this.isRead) return true;
+        else return false;
+    }
 }
 
 function displayBook(book){
